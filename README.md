@@ -1,1 +1,1 @@
-# alg
+## Projetos desenvolvidos na matéria de Algoritmos e Estrutura de Dados do DINF-UFPR
