@@ -1,4 +1,4 @@
-parametrosCompilacao=-Wall #-Wshadow
+parametrosCompilacao= -std=c99 -g #-Wshadow
 nomePrograma=trab
 
 all: $(nomePrograma)

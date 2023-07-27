@@ -1,100 +1,80 @@
+/*
+ *A ideia geral do programa de ordenação é fazer uma análise através da biblioteca TIME 
+ *para determinar o tempo que cada algoritmo de ordenação leva. 
+  *O objetivo é compreender e verificar qual algoritmo possui a melhor 
+ *eficiência em relação aos clocks por segundo (clocks per sec).
+*/
+
 #ifndef ORDENACAO_H_
 #define ORDENACAO_H_
 
 #define MAX_CHAR_NOME 50
+#define MAX_TAM 100
 
-//a função getNome deve colocar o seu nome dentro da chamada
-//seu nome pode ter no máximo MAX_CHAR_NOME - 1 caracteres
+/*Retorna o nome */
 void getNome(char nome[]);
 
-//a função a seguir deve retornar o seu número de GRR
+/*Retorna o GRR */
 unsigned int getGRR();
 
-//Assuma que os vetores estão ordenados ao chamar as funções de busca
-//As funções de busca não devem alterar o vetor
-//O retorno das funções de busca é o índice do elemento no vetor,
-//ou -1 caso o elemeno não exista no vetor
-//Você deve armazenar no ponteiro int* numComparacoes o número de comparações
-//envolvendo elementos do vetor feito pelo seu algoritmo na chamada
+/*Funcao auxiliar, troca dois inteiros em um vetor V*/
+void Troca (int *v, int a, int b);
 
-                    //Inicio Busca sequencial
-    //A busca sequencial foi a unica função que não utilizei o swap
-int buscaSequencial(int vetor[], int tam, int valor, int* numComparacoes, int n);
+/*Insere um valor I em um vetor V*/
+void Insere (int *v, int a, int b);
 
-                    //Fim Busca Sequencial
+/*Retorna o minimo de um vetor V*/
+int Minimo(int *v, int a, int b);
 
-                    //Inicio Busca Binaria
-    //função swap
-int buscaBinaria(int vetor[], int tam, int valor, int* numComparacoes);
+/*Recebe um vetor como entrada e retorna um vetor iniciado com valores aleatorios*/
+void inicia_vetor (int *v, int n);
 
-int BuscaBinaria_recursiva (int x, int v[], int a, int b, int *n);
+/* Realiza uma busca sequencial recursiva de um determinado valor X
+ * O ponteiro numComp, realiza a contagem do numero de comparações */
+void buscaSequencial(int x, int *v, int n, int *numComp);
 
-                    //Fim Busca Binaria
+/* Realiza uma busca bianria recursiva de um determinado valor X
+ * O ponteiro numComp, realiza a contagem do numero de comparações*/
+void buscaBinaria(int x, int *v, int n, int *numComp);
 
+/* Algoritmo que organiza os dados contidos no vetor de forma que
+ * faz uma troca sequencial com o valor maior subsequente 
+ * e insere na sua posicao correta*/
+int insertionSort(); 
 
-/*Funções complementares estão servindo como auxilio 
-para o funionamento de alguns algoritmos*/
+/* Algoritmo que seleciona o menor elemento e coloca na sua posição inicial 
+ * Até que o vetor fique ordenado. */
+int selectionSort();
 
-                    //Funções complementares
-void Troca (int v[], int a, int b);
+/* Divide o vetor ate um tamanho trivial*/
+int mergeSort(); 
 
-void Insere (int v[], int a, int b, int *n);
+/* Mescla os vetores divididos no merge*/
+int Intercala ();
 
-int Minimo(int v[], int a, int b, int *n);
+/* Algoritmo utiliza um pivô, onde todos a esquerda serão menores e a direita maiores, 
+ * Repete o processo recursivamente e depois */
+int quickSort(); 
+/* Realiza o processo de reorganização do vetor a partir do pivô*/
+int Particiona ();
 
-                    //Fim Funções complementares
+/* Ordena uma árvore binária completa*/
+int heapSort();
 
-/*Todos os algoritmos estão organizados em funções swap (funções que chamam funções recursivas),
-Todas as comparações "ifs" são calculados em forma de um ponteiro contador (N), todo retorno da função
-swap, é o numero de comparações*/
-
-                    //INICIO insertionSOrt 
-
-int insertionSort(int vetor[], int tam); //swap
-
-int insertionSort_recursivo (int v[], int a, int b, int *n);
-
-                    //FIM insertionSort
-
-                    //INICIO SeletionSort
-    //swap
-int selectionSort(int vetor[], int tam);
-
-int seletionSort_recursivo (int v[], int a, int b, int *n);
-
-                //FIM SeletionSort. ^
-
-                //INICIO Merge
-    //swap
-int mergeSort(int vetor[], int tam); 
-
-int mergeSort_recursivo (int v[], int a, int b, int *n);
-
-int Intercala (int v[], int a, int m, int b, int *n);
-                //FIM Merge
-
-                //INICIO Quick
-    //swap
-int quickSort(int vetor[], int tam); 
-
-int quickSort_recursivo (int v[], int a, int b, int *n);
-
-int Particiona (int v[], int a, int b, int x, int *n);
-
-                //FIM Quick
-
-                //Inicio Heaap
-int heapSort(int vetor[], int tam);
-
+/* Nodo raiz ou Pai*/
 int Pai (int i);
 
+/* Filho da esquerda de i, (2*i) */
 int Esquerda (int i);
 
+/* Filho da direita de i, (2*i+1) */
 int Direita (int i);
 
-int max_heapify(int v[], int i, int *n);
+/* Compara o nó raiz com os nós filhos da arvore binaria e se necessário realiza a troca.
+*  O nó com o maior valor ficara sempre na raiz.*/
+int max_heapify ();
 
-int build_max_heap (int v[], int tam, int *n);
-                //FIM Heap
+/* Aplica o max-heapfy para todos os nós da árvore*/
+int build_max_heap ();
 
 #endif // ORDENACAO_H_

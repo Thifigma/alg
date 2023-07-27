@@ -6,35 +6,44 @@
 
 int main(){
 	char nome[MAX_CHAR_NOME];
-	int idxBusca; /*Indice do valor procurado pela busca*/
-	int numComp = 0; /*Numero de comparações de cada função*/
-
-	/*Variaveis de comparações de cada busca*/
-	int numCompB = 0; /*Sequencial*/
-	int numCompBB = 0; /*Binária*/
+	int x = rand() %100; /*Valor aleatorio a ser buscado*/
+	int n = MAX_TAM; 	 /*Tamanho do vetor*/	
+	int numComp = 0; 	 /*Ponteiro para o umero de comparações*/
 	
 
-	srand (time(NULL));
+	/*Ponteiros para numero de comparações da busca Binaria e Sequencial*/
+	int numCompB = 0; 		/*Sequencial*/
+	int numCompBB  = 0; 	/*Binária*/
 
-	int tamVetor = rand ()%400;
-	int* vetor;
+	int *vetor;
+	if (!(vetor = malloc(n*sizeof(int)))){
+		printf ("Erro de alocacao! \n");
+		return 1;
+	}
+
+	inicia_vetor(vetor, n);
+
+	srand (time(NULL));
 
 	getNome(nome);
 	printf("Trabalho de %s\n", nome);
 	printf("GRR %u\n", getGRR());
+	printf ("\n");
 
 	/*variáveis do tipo clock_t*/
 	clock_t start, end;
     double total;
-	
-	
+
+	printf ("X a ser buscado: %d\n", x);
+
 	start = clock(); /*start recebe o "ciclo" corrente*/
-	insertionSort(vetor, tamVetor); 
+	buscaSequencial(x, vetor, n, &numCompB);
 	end = clock();/*end recebe o "ciclo" corrente*/
 	/*o tempo total é a diferença dividia pelos ciclos por segundo*/
 	total = ((double)end - start)/CLOCKS_PER_SEC;
+	printf ("Busca Sequencial\n");
 	printf("Tempo total: %f\n", total);
-	printf ("Numero de comparações do InsertionSort: %d\n", numComp); 	
+	printf ("Numero de comparações: %d\n", numCompB - 1);
 
 	printf ("\n");
 
