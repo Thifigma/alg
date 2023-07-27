@@ -23,9 +23,9 @@ void inicia_vetor (int *v, int n)
 
 void buscaSequencial(int x, int *v, int n, int *numComp)
 {
-	int a = 1;
+	int a = 0;
 
-	if (a > n){
+	if (a >= n){
 		(*numComp)++;
 		return;
 	}
