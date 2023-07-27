@@ -34,8 +34,6 @@ int main(){
 	clock_t start, end;
     double total;
 
-	printf ("X a ser buscado: %d\n", x);
-
 	start = clock(); /*start recebe o "ciclo" corrente*/
 	buscaSequencial(x, vetor, n, &numCompB);
 	end = clock();/*end recebe o "ciclo" corrente*/

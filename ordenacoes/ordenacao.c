@@ -27,14 +27,11 @@ void buscaSequencial(int x, int *v, int n, int *numComp)
 
 	if (a > n){
 		(*numComp)++;
-		printf ("CB numComp: %d\n", (*numComp));
 		return;
 	}
 
 	if (x == v[n]){
 		(*numComp)++;
-		printf ("numComp: %d\n", (*numComp));
-		printf ("Valor encontrado: %d\n", v[n]);
 		return;
 	}
 
