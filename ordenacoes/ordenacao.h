@@ -1,9 +1,3 @@
-/*
- *A ideia geral do programa de ordenação é fazer uma análise através da biblioteca TIME 
- *para determinar o tempo que cada algoritmo de ordenação leva. 
-  *O objetivo é compreender e verificar qual algoritmo possui a melhor 
- *eficiência em relação aos clocks por segundo (clocks per sec).
-*/
 
 #ifndef ORDENACAO_H_
 #define ORDENACAO_H_
@@ -20,27 +14,29 @@ unsigned int getGRR();
 /*Funcao auxiliar, troca dois inteiros em um vetor V*/
 void Troca (int *v, int a, int b);
 
-/*Insere um valor I em um vetor V*/
-void Insere (int *v, int a, int b);
+/*Insere um valor (x) em um vetor (v)
+ *Retorna o numero de comparações que foi realizada para inserir determinador. */
+int Insere (int *v, int a, int b);
 
-/*Retorna o minimo de um vetor V*/
+/*Retorna o minimo de um vetor V. */
 int Minimo(int *v, int a, int b);
 
 /*Recebe um vetor como entrada e retorna um vetor iniciado com valores aleatorios*/
-void inicia_vetor (int *v, int n);
+void iniciaVetor (int *v, int n);
 
 /* Realiza uma busca sequencial recursiva de um determinado valor X
- * O ponteiro numComp, realiza a contagem do numero de comparações */
-void buscaSequencial(int x, int *v, int n, int *numComp);
+ * O ponteiro numComp, realiza a contagem do numero de comparações 
+ * Retorna o valor x caso encontre, caso contrario retorna 0 */
+int buscaSequencial(int x, int *v, int n, int *numComp);
 
 /* Realiza uma busca bianria recursiva de um determinado valor X
  * O ponteiro numComp, realiza a contagem do numero de comparações*/
-void buscaBinaria(int x, int *v, int n, int *numComp);
+void buscaBinaria(int x, int *v, int a, int n, int *numComp);
 
 /* Algoritmo que organiza os dados contidos no vetor de forma que
  * faz uma troca sequencial com o valor maior subsequente 
  * e insere na sua posicao correta*/
-int insertionSort(); 
+int insertionSort(int *v, int n, int *numComp); 
 
 /* Algoritmo que seleciona o menor elemento e coloca na sua posição inicial 
  * Até que o vetor fique ordenado. */
