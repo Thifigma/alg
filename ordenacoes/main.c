@@ -41,22 +41,31 @@ int main(){
 	start = clock();
 	buscaSequencial(x, vetor, n, &numCompB);
 	end = clock();
-	total = ((double)end - start)/CLOCKS_PER_SEC;
+	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf ("Busca Sequencial\n");
 	printf("Tempo total: %f\n", total);
-	printf ("Numero de comparações: %d\n", numCompB - 1);
+	printf ("Numero de comparacoes: %d\n", numCompB);
 
 	printf ("\n");
 
 	start = clock();
 	buscaBinaria(x, vetor, a, n, &numCompBB);
 	end = clock();
-	total = ((double)end - start)/CLOCKS_PER_SEC;
+	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf ("Busca Binaria\n");
 	printf("Tempo total: %f\n", total);
-	printf ("Numero de comparações: %d\n", numCompBB);
+	printf ("Numero de comparacoes: %d\n", numCompBB);
 
+	printf ("\n");
 
+	start = clock();
+	insertionSort(vetor, n, &numComp);
+	end = clock();
+	total = ((double)end - start) / CLOCKS_PER_SEC;
+	printf ("InsertionSort\n");
+	printf ("Tempo total: %f\n", total);
+	printf ("Numero de comparacoes: %d\n", (numComp - 1) + numCompB);
+	
 	free(vetor);
 	return 0;
 }

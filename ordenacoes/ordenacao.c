@@ -26,12 +26,10 @@ int buscaSequencial(int x, int *v, int n, int *numComp)
 {
 	int a = 0; /*Determina o valor inicial do vetor. */
 
-	if (a >= n){
-		(*numComp)++;
+	if (a >= n)
 		return 0;
-	}
 
-	if (x == v[n]){
+	if (x == v[n]) {
 		(*numComp)++;
 		return x;
 	}
@@ -44,18 +42,17 @@ void buscaBinaria(int x, int *v, int a, int n, int *numComp)
 {
 	int m = 0; /*Determina o meio do vetor. */
 
-	if (a > n){
+	if (a > n)
 		return;
-	}
 
 	m = ((a + n) / 2);
 
-	if (x == v[m]){
+	if (x == v[m]) {
 		(*numComp)++;
 		return;
 	}
 
-	if(x < v[m]){
+	if(x < v[m]) {
 		(*numComp)++;
 		return buscaBinaria(x, v, a,  m - 1, numComp);
 	}
@@ -65,7 +62,7 @@ void buscaBinaria(int x, int *v, int a, int n, int *numComp)
 }
 
 /*Esta função vai servir como auxiliar de várias outras. */
-void Troca (int *v, int a, int b)
+void troca (int *v, int a, int b)
 {
 	int aux;
 
@@ -75,31 +72,32 @@ void Troca (int *v, int a, int b)
 }
 
 /*Esta função vai servir como auxiliar do algoritmo insertionSort. */
-int Insere (int *v, int a, int b)
+int insere (int *v, int a, int b)
 {
 	int numComp = 0;
 	int x = buscaSequencial(v[b], v, b - 1, &numComp);
 	int i = b;
 
-	while (i > x + 1){
-		Troca(v, i, i - 1);
-		i++;
+	while (i > x + 1) {
+		troca(v, i, i - 1);
+		i--;
 	}
-
+	
 	return numComp;
 }
 
-int insertionSort (int *v, int n, int *numComp)
+void insertionSort (int *v, int n, int *numComp)
 {
 	int a = 0; 
 
-	if (a > b){
+	if (a >= n) {
 		(*numComp)++;
-		return 0;
+		return;
 	}
 
+	(*numComp)++;	
 	insertionSort(v, n - 1, numComp);
-	Insere(v, a, b);
+	insere(v, a, n);
 
-	return 1;
+	return;	
 }
