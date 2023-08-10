@@ -16,10 +16,11 @@ void troca (int *v, int a, int b);
 
 /*Insere um valor (x) em um vetor (v)
  *Retorna o numero de comparações que foi realizada para inserir determinador. */
-int insere (int *v, int a, int b);
+void insere (int *v, int n, int *numComp);
 
-/*Retorna o minimo de um vetor V. */
-int minimo(int *v, int a, int b);
+/*Retorna o minimo de um vetor V e 
+ *calcula o numero de comparacoes no ponteiro fornecido */
+int minimo(int *v, int n, int *numComp);
 
 /*Recebe um vetor como entrada e retorna um vetor iniciado com valores aleatorios*/
 void iniciaVetor (int *v, int n);
@@ -40,7 +41,7 @@ void insertionSort(int *v, int n, int *numComp);
 
 /* Algoritmo que seleciona o menor elemento e coloca na sua posição inicial 
  * Até que o vetor fique ordenado. */
-int selectionSort();
+void selectionSort(int *v, int n, int *numComp);
 
 /* Divide o vetor ate um tamanho trivial*/
 int mergeSort(); 
