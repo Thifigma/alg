@@ -25,7 +25,7 @@ int main(){
 
 	iniciaVetor(vetor, n);
 
-	srand (time(NULL));
+	srand (time(NULL)); /*Semente*/
 
 	getNome(nome);
 	printf("Trabalho de %s\n", nome);
