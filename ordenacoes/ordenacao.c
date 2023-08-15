@@ -71,21 +71,39 @@ void troca (int *v, int a, int b)
 	v[b] = aux;
 }
 
-/*Esta função vai servir como auxiliar do algoritmo insertionSort. */
-int insere (int *v, int a, int b)
+/*Esta função vai servir como auxiliar do algoritmo insertionSort. 
+ * Pode ser inserido como VOID, verificar... */
+void insere (int *v, int b, int *numComp)
 {
-	int numComp = 0;
-	int x = buscaSequencial(v[b], v, b - 1, &numComp);
+	int x = buscaSequencial(v[b], v, b - 1, numComp);
 	int i = b;
 
 	while (i > x + 1) {
 		troca(v, i, i - 1);
+		(*numComp)++;
 		i--;
 	}
 	
-	return numComp;
+	return;
 }
+int minimo (int *v, int n, int *numComp)
+{
+	int a = 0;
+	int m = 0;
+	
+	if (n == a)
+		return a;
 
+	(*numComp)++;
+	m = minimo(v, n - 1, numComp);
+	
+	if (v[n] < v[m]) {
+		(*numComp)++;
+		m = n;
+	}
+
+	return m;
+}
 void insertionSort (int *v, int n, int *numComp)
 {
 	int a = 0; 
@@ -97,7 +115,16 @@ void insertionSort (int *v, int n, int *numComp)
 
 	(*numComp)++;	
 	insertionSort(v, n - 1, numComp);
-	insere(v, a, n);
+	insere(v, n, numComp);
+}
 
-	return;	
+void selectionSort (int *v, int n, int *numComp)
+{
+	int a = 0;
+	if (n <= a){
+		return;
+	}
+
+	troca(v, n, minimo(v, n, numComp));
+	selectionSort(v, n - 1, numComp);
 }

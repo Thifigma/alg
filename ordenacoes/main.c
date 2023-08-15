@@ -64,8 +64,19 @@ int main(){
 	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf ("InsertionSort\n");
 	printf ("Tempo total: %f\n", total);
-	printf ("Numero de comparacoes: %d\n", (numComp - 1) + numCompB);
+	printf ("Numero de comparacoes: %d\n", numComp);
+
+	printf ("\n");
+
+	start = clock();
+	selectionSort(vetor, n, &numComp);
+	end = clock();
+	total = ((double)end - start) / CLOCKS_PER_SEC;
+	printf ("selectionSort\n");
+	printf ("Tempo total: %f\n", total);
+	printf ("Numero de comparacoes: %d\n", numComp);
 	
 	free(vetor);
+	
 	return 0;
 }
