@@ -1,4 +1,3 @@
-
 #define MAXTAM 10
 
 /*Inicia um conjunto vazio inciado com -1. */

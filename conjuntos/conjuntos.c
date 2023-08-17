@@ -19,7 +19,9 @@ void iniciaVazio(int *conjunto)
 }
 
 /*Quando se encontra no conteudo do vetor o valor (-1), entende-se que
- * dali em diante o vetor encontra-se vazio.  */
+ * dali em diante o vetor encontra-se vazio.  
+ *Como dito anteriormente na função acima o valor -1 
+ * é posto na posição final do conjunto*/
 int tamConjunto(int *conjunto)
 {
 	int tamanho = 0;
@@ -67,7 +69,7 @@ void mostraConjunto (int *conjunto)
 void criaConjunto(int *conjunto)
 {
 	int tam = 0;
-    srand(time(NULL));
+    	srand(time(NULL));
 
 	scanf ("%d", &tam);
 
@@ -84,15 +86,34 @@ void une(int *uniao, int *c1, int *c2)
 {
 	int tc1 = tamConjunto(c1);
 	int tc2 = tamConjunto(c2);
+	int tam = tc1 + tc2;
 
-	for (int i = 0; i < tc1; i++) {
+	int i = 0;
+	int j = 0; 
+	int k = 0;
+
+	while (k < tam) {
+		if (c1[i] < c2[j]) {
+			uniao[k] = c1[i];
+			i++;
+		} else {
+			uniao[k] = c2[j];
+			j++;
+		}
+
+		k++;
+	}
+	
+	/*	for (int i = 0; i < tc1; i++) {
 		uniao[i] = c1[i];
 	}
 
 	for (int i = 0; i < tc2; i++) {
 		int indice = tc1;
 		uniao[indice + i] = c2[i];
-	}
+	} 
+
+	*/
 }
 
 int uniao(int *c1, int *c2)
