@@ -1,7 +1,5 @@
 
 #define MAXTAM 10
-#define MIN 13
-#define MAX 42
 
 /*Inicia um conjunto vazio inciado com -1. */
 void iniciaVazio(int *conjunto);
@@ -48,6 +46,6 @@ void selectionSort(int *v, int n);
 
 /*Verifica a possibilidade de realizar a interseccao entre dois conjuntos 
  * fornecidos*/
-int intersec(int conjunto, int conjunto1);
+int intersec(int c1, int c2);
 
 

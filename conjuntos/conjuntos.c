@@ -3,6 +3,9 @@
 #include <time.h>
 #include "conjuntos.h"
 
+#define MAX 42
+#define MIN 15
+	
 
 /*O laço garante que o usuario digitara um valor dentro dos limites.
  *A função garante que no final do vetor tem um vazio (-1).  */
