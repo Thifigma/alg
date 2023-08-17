@@ -23,7 +23,8 @@ int vazio(int conjunto[]);
  *Tam será fornecido pelo usuário e tera seu limite vinculado a macro MAXTAM.*/
 void criaConjunto(int *conjunto);
 
-
+/*Une dois conjuntos no conjunto uniao. */
+void une(int *uniao, int *c1, int *c2);
 
 /*"retorna" a uniao de dois conjuntos, ou seja, verifica a possibilidade 
  * de uniao entre os dois conjuntos e caso seja possivel a realiza.
