@@ -1,5 +1,5 @@
 parametrosCompilacao= -std=c99 -g #-Wshadow
-nomePrograma=trab
+nomePrograma = ordenacao
 
 all: $(nomePrograma)
 

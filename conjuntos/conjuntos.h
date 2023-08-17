@@ -36,6 +36,16 @@ void une(int *uniao, int *c1, int *c2);
  * A função vai retornar 1 caso ocorra a união e 0 caso contrario. */
 int uniao(int *c1, int *c2);
 
+/*Função complementar para o selection sort. 
+ * Troca os conteudos fornecidos de posição no vetor. */
+void troca(int *v, int a, int b);
+
+/*Retorna o menor valor de um determinado vetor V. */
+int minimo(int *v, int n);
+
+/*Ordena o vetor.*/
+void selectionSort(int *v, int n);
+
 /*Verifica a possibilidade de realizar a interseccao entre dois conjuntos 
  * fornecidos*/
 int intersec(int conjunto, int conjunto1);

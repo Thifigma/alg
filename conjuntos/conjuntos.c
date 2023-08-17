@@ -114,7 +114,43 @@ int uniao(int *c1, int *c2)
 	return 1;
 }
 
+void troca (int *v, int a, int b)
+{
+	int aux;
 
+	aux = v[a];
+	v[a] = v[b];
+	v[b] = aux;
+}
+
+int minimo (int *v, int n)
+{
+	int a = 0;
+	int m = 0;
+
+	if (n == a) { 
+		return a;
+	}
+
+	m = minimo(v, n - 1);
+
+	if (v[n] < v[m]) {
+		m = n;
+	}
+
+	return m;
+}
+
+void selectionSort (int *v, int n)
+{
+	int a = 0; /*Inicio do vetor. */
+
+	if (n <= a)
+		return;
+
+	troca(v, n, minimo(v, n));
+	selectionSort(v, n - 1);
+}
 
 
 

@@ -6,11 +6,12 @@
 
 int main(){
 	char nome[MAX_CHAR_NOME];
-	int x = rand() %100; 	/*Valor aleatorio a ser buscado*/
 	int n = MAX_TAM; 	/*Tamanho do vetor*/	
 	int a = 0; 		/*Inicio do vetor*/
 	int numComp = 0; 	/*Ponteiro para o umero de comparações*/
 	
+	srand (time(NULL)); /*Semente*/	
+	int x = MIN - rand() % (MAX - MIN + 1); 	/*Valor aleatorio a ser buscado*/
 
 	/*Numero de comparações da busca binaria e sequencial separadamente
 	 * para enfatizar a diferença de quantidade de comparações.*/
@@ -24,8 +25,6 @@ int main(){
 	}
 
 	iniciaVetor(vetor, n);
-
-	srand (time(NULL)); /*Semente*/
 
 	getNome(nome);
 	printf("Trabalho de %s\n", nome);
@@ -59,7 +58,7 @@ int main(){
 	printf ("\n");
 
 	start = clock();
-	insertionSort(vetor, n, &numComp);
+	numComp = insertionSort(vetor, n);
 	end = clock();
 	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf ("InsertionSort\n");
@@ -69,7 +68,7 @@ int main(){
 	printf ("\n");
 
 	start = clock();
-	selectionSort(vetor, n, &numComp);
+	numComp = selectionSort(vetor, n);
 	end = clock();
 	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf ("selectionSort\n");

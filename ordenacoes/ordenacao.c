@@ -104,27 +104,35 @@ int minimo (int *v, int n, int *numComp)
 
 	return m;
 }
-void insertionSort (int *v, int n, int *numComp)
+
+int insertionSort (int *v, int n)
 {
 	int a = 0; 
+	int numComp = 0;
 
 	if (a >= n) {
-		(*numComp)++;
-		return;
+		numComp++;
+		return numComp;
 	}
 
-	(*numComp)++;	
-	insertionSort(v, n - 1, numComp);
-	insere(v, n, numComp);
+	numComp++;	
+	insertionSort(v, n - 1);
+	insere(v, n, &numComp);
+
+	return numComp;
 }
 
-void selectionSort (int *v, int n, int *numComp)
+int selectionSort (int *v, int n)
 {
 	int a = 0;
+	int numComp = 0;
+
 	if (n <= a){
-		return;
+		return numComp;
 	}
 
-	troca(v, n, minimo(v, n, numComp));
-	selectionSort(v, n - 1, numComp);
+	troca(v, n, minimo(v, n, &numComp));
+	selectionSort(v, n - 1);
+
+	return numComp;
 }

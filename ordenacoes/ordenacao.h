@@ -4,6 +4,10 @@
 
 #define MAX_CHAR_NOME 50
 #define MAX_TAM 100
+#define MIN 15
+#define MAX 97
+
+
 
 /*Retorna o nome */
 void getNome(char nome[]);
@@ -37,11 +41,11 @@ void buscaBinaria(int x, int *v, int a, int n, int *numComp);
 /* Algoritmo que organiza os dados contidos no vetor de forma que
  * faz uma troca sequencial com o valor maior subsequente 
  * e insere na sua posicao correta*/ 
-void insertionSort(int *v, int n, int *numComp); 
+int insertionSort(int *v, int n); 
 
 /* Algoritmo que seleciona o menor elemento e coloca na sua posição inicial 
  * Até que o vetor fique ordenado. */
-void selectionSort(int *v, int n, int *numComp);
+int selectionSort(int *v, int n);
 
 /* Divide o vetor ate um tamanho trivial*/
 int mergeSort(); 
