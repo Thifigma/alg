@@ -5,7 +5,6 @@ int main()
 {
 	int conjunto1[MAXTAM + 1];
 	int conjunto2[MAXTAM + 1];
-
 	iniciaVazio(conjunto1);
 	iniciaVazio(conjunto2);
 
