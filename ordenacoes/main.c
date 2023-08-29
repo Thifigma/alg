@@ -4,6 +4,10 @@
 
 #include "ordenacao.h"
 
+#define MAX 5000
+#define MIN 4200
+
+
 int main(){
 	char nome[MAX_CHAR_NOME];
 	int n = MAX_TAM; 	/*Tamanho do vetor*/	

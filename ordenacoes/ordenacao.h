@@ -4,8 +4,6 @@
 
 #define MAX_CHAR_NOME 50
 #define MAX_TAM 100
-#define MIN 15
-#define MAX 97
 
 
 

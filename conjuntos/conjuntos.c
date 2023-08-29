@@ -82,62 +82,6 @@ void criaConjunto(int *conjunto)
 	}
 }
 
-void une(int *uniao, int *c1, int *c2)
-{
-	int tc1 = tamConjunto(c1);
-	int tc2 = tamConjunto(c2);
-	int tam = tc1 + tc2;
-
-	int i = 0;
-	int j = 0; 
-	int k = 0;
-
-	while (k < tam) {
-		if (c1[i] < c2[j]) {
-			uniao[k] = c1[i];
-			i++;
-		} else {
-			uniao[k] = c2[j];
-			j++;
-		}
-
-		k++;
-	}
-	
-	/*	for (int i = 0; i < tc1; i++) {
-		uniao[i] = c1[i];
-	}
-
-	for (int i = 0; i < tc2; i++) {
-		int indice = tc1;
-		uniao[indice + i] = c2[i];
-	} 
-
-	*/
-}
-
-int uniao(int *c1, int *c2)
-{
-	if ( (vazio(c1)) && (vazio(c1)) ) {
-		printf ("A uniao eh vazia! \n");
-		return 0;
-	}
-	
-	int tam = tamConjunto(c1) + tamConjunto(c2);
-	int uniao[tam];
-
-	une(uniao, c1, c2);
-	
-	for (int i = 0; i < tam; i++) {
-		printf ("%d ", uniao[i]);
-	}
-	printf ("\n"); 
-
-	// mostraConjunto(uniao); Como arrumar este erro? 
-
-	return 1;
-}
-
 void troca (int *v, int a, int b)
 {
 	int aux;
@@ -176,6 +120,52 @@ void selectionSort (int *v, int n)
 	selectionSort(v, n - 1);
 }
 
+void une(int *uniao, int *c1, int *c2)
+{
+	int tc1 = tamConjunto(c1);
+	int tc2 = tamConjunto(c2);
+	int tam = tc1 + tc2;
 
+	int i = 0;
+	int j = 0; 
+	int k = 0;
+
+	selectionSort(c1, tc1);
+	selectionSort(c2, tc2);
+	
+	while (k < tam) {
+		if (c1[i] < c2[j]) {
+			uniao[k] = c1[i];
+			i++;
+		} else {
+			uniao[k] = c2[j];
+			j++;
+		}
+
+		k++;
+	}
+}
+
+int uniao(int *c1, int *c2)
+{
+	if ( (vazio(c1)) && (vazio(c1)) ) {
+		printf ("A uniao eh vazia! \n");
+		return 0;
+	}
+	
+	int tam = tamConjunto(c1) + tamConjunto(c2);
+	int uniao[tam];
+
+	une(uniao, c1, c2);
+	
+	for (int i = 0; i < tam; i++) {
+		printf ("%d ", uniao[i]);
+	}
+	printf ("\n"); 
+
+	// mostraConjunto(uniao); Como arrumar este erro? 
+
+	return 1;
+}
 
 
