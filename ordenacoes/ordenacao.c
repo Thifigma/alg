@@ -1,11 +1,10 @@
 #include "ordenacao.h"
 
-#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-/*adicionada terminação manual para caso de overflow*/
+/* Adicionada terminação manual para caso de overflow. */
 void getNome(char nome[]){
 	strncpy(nome, "Thiago Figueiredo Marcos", MAX_CHAR_NOME);
 	nome[MAX_CHAR_NOME-1] = '\0';
@@ -17,51 +16,46 @@ unsigned int getGRR(){
 
 void iniciaVetor (int *v, int n)
 {
+	srand (time(NULL)); 	
+	int x = MIN - rand() % (MAX - MIN + 1); 	
+
 	for(int i = 0; i < n; i++){
-		v[i] = rand() %100;
+		x = MIN - rand() % (MAX - MIN + 1); 
+		v[i] = x;
 	}
 }
 
-int buscaSequencial(int x, int *v, int n, int *numComp)
+int buscaSequencial(int x, int *v, int n)
 {
-	int a = 0; /*Determina o valor inicial do vetor. */
-
-	if (a >= n)
-		return 0;
-
-	if (x == v[n]) {
-		(*numComp)++;
-		return x;
-	}
-
-	(*numComp)++;
-	buscaSequencial(x, v, n - 1, numComp);
-}
-
-void buscaBinaria(int x, int *v, int a, int n, int *numComp)
-{
-	int m = 0; /*Determina o meio do vetor. */
+	int a = 0; 
 
 	if (a > n)
-		return;
+		return a;
 
-	m = ((a + n) / 2);
-
-	if (x == v[m]) {
-		(*numComp)++;
-		return;
+	if (x == v[n]) {
+		return n;
 	}
 
-	if(x < v[m]) {
-		(*numComp)++;
-		return buscaBinaria(x, v, a,  m - 1, numComp);
-	}
-
-	(*numComp)++;
-	return buscaBinaria(x, v, m + 1, n, numComp);
+	buscaSequencial(x, v, n - 1);
 }
 
-/*Esta função vai servir como auxiliar de várias outras. */
+void buscaBinaria(int x, int *v, int a, int n)
+{
+	if(a > n)
+		return;
+
+	int m = ((a+n) / 2);
+
+	if(x == v[m]){
+		return;
+	}
+
+	if(x < v[m])
+		return buscaBinaria(x, v, a, m - 1);
+	return buscaBinaria(x, v, m + 1, n);
+}
+
+/* Função axiliar. */
 void troca (int *v, int a, int b)
 {
 	int aux;
@@ -71,22 +65,21 @@ void troca (int *v, int a, int b)
 	v[b] = aux;
 }
 
-/*Esta função vai servir como auxiliar do algoritmo insertionSort. 
- * Pode ser inserido como VOID, verificar... */
-void insere (int *v, int b, int *numComp)
+/* Auxiliar do insertionSort. */
+void insere (int *v, int b)
 {
-	int x = buscaSequencial(v[b], v, b - 1, numComp);
+	int x = buscaSequencial(v[b], v, b - 1);
 	int i = b;
 
 	while (i > x + 1) {
 		troca(v, i, i - 1);
-		(*numComp)++;
 		i--;
 	}
 	
 	return;
 }
-int minimo (int *v, int n, int *numComp)
+
+int minimo (int *v, int n)
 {
 	int a = 0;
 	int m = 0;
@@ -94,45 +87,38 @@ int minimo (int *v, int n, int *numComp)
 	if (n == a)
 		return a;
 
-	(*numComp)++;
-	m = minimo(v, n - 1, numComp);
+	m = minimo(v, n - 1);
 	
 	if (v[n] < v[m]) {
-		(*numComp)++;
 		m = n;
 	}
 
 	return m;
 }
 
-int insertionSort (int *v, int n)
-{
-	int a = 0; 
-	int numComp = 0;
-
-	if (a >= n) {
-		numComp++;
-		return numComp;
-	}
-
-	numComp++;	
-	insertionSort(v, n - 1);
-	insere(v, n, &numComp);
-
-	return numComp;
-}
-
-int selectionSort (int *v, int n)
+void insertionSort (int *v, int n)
 {
 	int a = 0;
-	int numComp = 0;
+
+	if(a > n)
+		return;
+
+	insertionSort(v, n - 1);	
+	insere(v, n);
+
+	return;
+}
+
+void selectionSort (int *v, int n)
+{
+	int a = 0;
 
 	if (n <= a){
-		return numComp;
+		return;
 	}
 
-	troca(v, n, minimo(v, n, &numComp));
+	troca(v, n, minimo(v, n) );
 	selectionSort(v, n - 1);
 
-	return numComp;
+	return;
 }
