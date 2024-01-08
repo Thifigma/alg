@@ -123,9 +123,6 @@ void selectionSort (int *v, int n)
 	return;
 }
 
-// a = p
-// n == r
-
 void intercala(int *v, int a, int m, int b) 
 {
     if (a >= b)
