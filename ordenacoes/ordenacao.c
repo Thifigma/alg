@@ -122,3 +122,53 @@ void selectionSort (int *v, int n)
 
 	return;
 }
+
+// a = p
+// n == r
+
+void intercala(int *v, int a, int m, int b) 
+{
+    if (a >= b)
+        return;
+    
+    int *u;
+    if (!(u = malloc((b - a + 1) * sizeof(int)))) {
+        printf("Erro de alocacao!\n");
+        exit(1);
+    }
+
+    int i = a;
+    int j = m + 1;
+
+    for (int k = a; k <= b - a; k++) {
+        if ((j > b) || (i <= m && v[i] <= v[j])) {
+            u[k] = v[i];
+            i++;
+        } else {
+            u[k] = v[j];
+            j++;
+        }
+    }
+
+    for (int i = a; i < b - a; i++) {
+        v[i] = u[i - a];
+    }
+
+    free(u);
+}
+
+void mergeSort(int *v, int a, int b)
+{
+	int m;
+
+	if(a >= b)
+		return;
+
+	m = ((a + b) / 2);
+
+	mergeSort(v, a, m);
+	mergeSort(v, m + 1, b);
+	
+	intercala(v, a, m, b);
+}
+

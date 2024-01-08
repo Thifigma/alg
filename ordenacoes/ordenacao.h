@@ -4,7 +4,7 @@
 #define ORDENACAO_H_
 
 #define MAX_CHAR_NOME 50
-#define MAX_TAM 100000
+#define MAX_TAM 1000
 #define MAX 64
 #define MIN 10
 
@@ -46,11 +46,11 @@ void insertionSort(int *v, int n);
  * até que o vetor fique ordenado. */
 void selectionSort(int *v, int n);
 
-/* Divide o vetor ate um tamanho trivial*/
-int mergeSort(); 
-
 /* Mescla os vetores divididos no merge*/
-int Intercala ();
+void intercala (int *v, int a, int m, int b);
+
+/* Divide o vetor ate um tamanho trivial*/
+void mergeSort(int *v, int a, int n); 
 
 /* Utiliza um pivô, onde todos a esquerda serão menores e a direita maiores, 
  * Repete o processo recursivamente. */

@@ -14,7 +14,7 @@ int main(){
 	int *vetor;
 	if (!(vetor = malloc(n*sizeof(int)))) {
 		printf ("Erro de alocacao! \n");
-		return 1;
+		exit(1);
 	}
 
 	iniciaVetor(vetor, n);
@@ -59,6 +59,14 @@ int main(){
 	end = clock();
 	total = ((double)end - start) / CLOCKS_PER_SEC;
 	printf ("selectionSort\n");
+	printf ("Tempo total: %f\n", total);
+	printf("\n");
+
+	start = clock();
+	mergeSort(vetor, a, n);
+	end = clock();
+	total = ((double)end - start) / CLOCKS_PER_SEC;
+	printf ("mergeSort\n");
 	printf ("Tempo total: %f\n", total);
 	printf("\n");
 
